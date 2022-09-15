@@ -7,18 +7,13 @@ using UnityEngine.Animations;
 
 public class PP : MonoBehaviour
 {
-
-    [SerializeField] float speed = 0.008f, delel, ochki,bestScore,coin;
+    [SerializeField] float speed, delel, ochki,bestScore,coin;
     [SerializeField] Transform spynchik;
     [SerializeField] Text textochki, textsym,bestSoreText,coinText;
-    [SerializeField] Image deadPanel;
     [SerializeField] bool StatPos;
     [SerializeField] GameObject DeadLine;
     [SerializeField] int skinNum;
 
-    private Animator anim;
-
-    public bool pause;
 
     Animator anim;
     AudioClip clip;
@@ -30,7 +25,7 @@ public class PP : MonoBehaviour
    
     void Start()
     {
-        pause = false;
+        
 
         coin = PlayerPrefs.GetFloat("coin",coin);      // загрузка кол. монет и лучший результат
         bestScore= PlayerPrefs.GetFloat("bestScore", bestScore);
@@ -41,9 +36,6 @@ public class PP : MonoBehaviour
         
 
         anim = GetComponent<Animator>();
-
-        deadPanel.gameObject.SetActive(false);
-
 
         clip = Microphone.Start(null, true, 1, 44100); //оброботка микрофона
         samples = new float[clip.channels * clip.samples];
@@ -63,19 +55,17 @@ public class PP : MonoBehaviour
         {
             anim.SetInteger("SN", 0);
         }
-
     }
 
-    private void Update()
+    void Update()
     {
-
         bestSoreText.text = "Best score: "+bestScore; // текста
         coinText.text = "" + coin;
         textochki.text = "" + ochki;
-        
+
 
         transform.position += Vector3.right * 0.010f; //движение птицы вправо
-        speed = 0.008f;
+
         
 
         float average = 0.0f; //оброботка микрофона
@@ -119,14 +109,12 @@ public class PP : MonoBehaviour
     {
         if (collision.gameObject.tag == "gg") //столкновение с опасностями
         {
-            pause = true;
-            deadPanel.gameObject.SetActive(true);
-
-            if (bestScore < ochki)
+            if (bestScore<ochki)
             {
                 bestScore = ochki;
-                PlayerPrefs.SetFloat("bestScore", bestScore);
+                PlayerPrefs.SetFloat("bestScore",bestScore);
             }
+            SceneManager.LoadScene(0);
             ochki = 0;
         }
     }
