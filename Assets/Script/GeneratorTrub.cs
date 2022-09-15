@@ -4,67 +4,42 @@ using UnityEngine;
 
 public class GeneratorTrub : MonoBehaviour
 {
+    // Start is called before the first frame update
     public GameObject pipes;
     public GameObject pipesMones;
     public GameObject fon;
 
-
-    [SerializeField] float rastTrub = 0;
-
+    [SerializeField] float rastTrub=0;
     [SerializeField] float rastfona = 0;
-
-    private PP pp;
-
-    private void Start()
+    void Start()
     {
-
-        pp = FindObjectOfType<PP>();
-    }
-
-    private void Update()
-    {
-        if (!pp.pause)
-        {
-            StartCoroutine(Spawner());
-            StartCoroutine(SpawnerFona());
-        }
-    }
-
-
-        StartCoroutine(Spawner()); //Г§Г ГЇГіГ±ГЄ ГЄГ Г°ГіГІГЁГ­
+        StartCoroutine(Spawner()); //запуск карутин
         StartCoroutine(SpawnerFona());
     }
-
 
     IEnumerator Spawner()
     {
         while (true)
         {
-
-
-            yield return new WaitForSeconds(2);
-
-            float randTruba = Random.Range(1,10); //Г°Г Г­Г¤Г®Г¬ГїГІГ±Гї ГўГ»Г±Г®ГІГ  ГІГ°ГіГЎ ГЁ Г¬Г®Г­ГҐГІГЄГЁ
+            float randTruba = Random.Range(1,10); //рандомятся высота труб и монетки
             yield return new WaitForSeconds(1);
-
             float rand = Random.Range(-1.87f, -0.25f);
 
-            if (randTruba > 5) // Г±ГЇГ ГіГ­ ГІГ°ГіГЎГ» ГЎГҐГ§ Г¬Г®Г­ГҐГІГЄГЁ
+            if (randTruba > 5) // спаун трубы без монетки
             {                
                 GameObject newPipe = Instantiate(pipes, new Vector3(rastTrub, rand, 1), Quaternion.identity);
                 rastTrub += 5;
             }
-            else // Г±ГЇГ ГіГ­ ГІГ°ГіГЎГ» Г± Г¬Г®Г­ГҐГІГЄГ®Г©
+            else // спаун трубы с монеткой
             {
                 
                 GameObject newPipe = Instantiate(pipesMones, new Vector3(rastTrub, rand, 1), Quaternion.identity);
                 rastTrub += 5;
             }       
         }
-
+        
     }
-
-    IEnumerator SpawnerFona() //Г±ГЇГ ГіГ­ ГґГ®Г­Г 
+    IEnumerator SpawnerFona() //спаун фона
     {
         while (true)
         {
