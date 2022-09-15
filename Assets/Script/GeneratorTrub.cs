@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class GeneratorTrub : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject pipes;
     public GameObject fon;
-    [SerializeField] float rastTrub=0;
+
+    [SerializeField] float rastTrub = 0;
     [SerializeField] float rastfona = 0;
-    void Start()
+
+    private PP pp;
+
+    private void Start()
     {
-        StartCoroutine(Spawner());
-        StartCoroutine(SpawnerFona());
+        pp = FindObjectOfType<PP>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!pp.pause)
+        {
+            StartCoroutine(Spawner());
+            StartCoroutine(SpawnerFona());
+        }
     }
+
     IEnumerator Spawner()
     {
         while (true)
         {
-            
+
             yield return new WaitForSeconds(2);
             float rand = Random.Range(-1.87f, -0.25f);
             GameObject newPipe = Instantiate(pipes, new Vector3(rastTrub, rand, 1), Quaternion.identity);
             rastTrub += 5;
             Destroy(newPipe, 20);
         }
-        
+
     }
+
     IEnumerator SpawnerFona()
     {
         while (true)

@@ -7,30 +7,35 @@ using UnityEngine.Animations;
 
 public class PP : MonoBehaviour
 {
-    [SerializeField] float speed, delel, ochki,bestScore;
+    [SerializeField] float speed = 0.008f, delel, ochki, bestScore;
     [SerializeField] Transform spynchik;
-    [SerializeField] Text textochki, textsym,bestSoreText;
-    Animator anim;
+    [SerializeField] Text textochki, textsym, bestSoreText;
+    [SerializeField] Image deadPanel;
 
+    private Animator anim;
+
+    public bool pause;
 
     AudioClip clip;
     float[] samples;
 
-    void Start()
+    private void Start()
     {
-       bestScore= PlayerPrefs.GetFloat("bestScore", bestScore);
+        pause = false;
+        bestScore = PlayerPrefs.GetFloat("bestScore", bestScore);
         ochki = 0;
         clip = Microphone.Start(null, true, 1, 44100);
         samples = new float[clip.channels * clip.samples];
         anim = GetComponent<Animator>();
+        deadPanel.gameObject.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        bestSoreText.text = "Best score: "+bestScore;
+        bestSoreText.text = "Best score: " + bestScore;
         textochki.text = "" + ochki;
         transform.position += Vector3.right * 0.01f;
-
+        speed = 0.008f;
         clip.GetData(samples, 0);
 
         float average = 0.0f;
@@ -75,12 +80,14 @@ public class PP : MonoBehaviour
     {
         if (collision.gameObject.tag == "gg")
         {
-            if (bestScore<ochki)
+            pause = true;
+            deadPanel.gameObject.SetActive(true);
+
+            if (bestScore < ochki)
             {
                 bestScore = ochki;
-                PlayerPrefs.SetFloat("bestScore",bestScore);
+                PlayerPrefs.SetFloat("bestScore", bestScore);
             }
-            SceneManager.LoadScene(0);
             ochki = 0;
             // gameObject.transform.position = spynchik.position;
             ochki = 0;
