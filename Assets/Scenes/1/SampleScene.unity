@@ -153,10 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipes: {fileID: 308801032448847337, guid: 9240ef472777e76469d1d25c50c85abf, type: 3}
-  pipesMones: {fileID: 1086838586598970268, guid: 0f74306c690b849429f95f94d4891428, type: 3}
-  fon: {fileID: 4382538237670960709, guid: f6212f79a27bcdb47b7f7fef75825fca, type: 3}
-  rastTrub: 0
-  rastfona: 0
+  pipesWithMoney: {fileID: 0}
+  background: {fileID: 0}
 --- !u!4 &347977437
 Transform:
   m_ObjectHideFlags: 0
@@ -260,10 +258,10 @@ GameObject:
   m_Component:
   - component: {fileID: 394221683}
   - component: {fileID: 394221682}
-  - component: {fileID: 394221681}
   - component: {fileID: 394221680}
   - component: {fileID: 394221684}
   - component: {fileID: 394221679}
+  - component: {fileID: 394221681}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -283,19 +281,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc85822b948d0743b7747a5af3e3b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.007
   delel: 27000
-  ochki: 0
-  bestScore: 0
-  coin: 0
-  spynchik: {fileID: 1439987482}
-  textochki: {fileID: 909499394}
-  textsym: {fileID: 800814047}
+  speed: 0.007
+  spawn: {fileID: 0}
+  scoreText: {fileID: 0}
+  noiseLevelText: {fileID: 0}
   bestSoreText: {fileID: 351575383}
-  coinText: {fileID: 1471623339}
-  StatPos: 1
+  moneyText: {fileID: 0}
+  moneyInShopText: {fileID: 0}
+  statPos: 0
   DeadLine: {fileID: 1032275371}
+  deadPanel: {fileID: 0}
   skinNum: 0
+  money: 0
+  pause: 0
 --- !u!50 &394221680
 Rigidbody2D:
   serializedVersion: 4
@@ -317,8 +316,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &394221681
-BoxCollider2D:
+--- !u!60 &394221681
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -340,9 +339,40 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.8300002, y: 1.5407522}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.06824256, y: -0.7729394}
+      - {x: 0.048944954, y: -0.6557519}
+      - {x: 0.034296516, y: -0.56786126}
+      - {x: 0.1807809, y: -0.7436425}
+      - {x: 0.21007778, y: -0.7729394}
+      - {x: 0.3272653, y: -0.7729394}
+      - {x: 0.4444528, y: -0.6557519}
+      - {x: 0.6348825, y: -0.40672842}
+      - {x: 0.75207, y: -0.26024404}
+      - {x: 0.8253122, y: 0.208506}
+      - {x: 0.92785126, y: 0.32569352}
+      - {x: 0.92785126, y: 0.48682633}
+      - {x: 0.6348825, y: 0.7797951}
+      - {x: 0.26867154, y: 0.7797951}
+      - {x: 0.1807809, y: 0.72120136}
+      - {x: 0.063593395, y: 0.56006855}
+      - {x: -0.14148475, y: 0.3549904}
+      - {x: -0.11218787, y: 0.2817482}
+      - {x: -0.683477, y: 0.2817482}
+      - {x: -0.8153129, y: 0.19385757}
+      - {x: -0.85925823, y: 0.04737318}
+      - {x: -0.6395317, y: -0.15770496}
+      - {x: -0.5223442, y: -0.23094715}
+      - {x: -0.59558636, y: -0.30418935}
+      - {x: -0.62488323, y: -0.3627831}
+      - {x: -0.8006645, y: -0.40672842}
+      - {x: -0.917852, y: -0.5092675}
+      - {x: -0.917852, y: -0.75829095}
+      - {x: -0.8885551, y: -0.7729394}
+      - {x: -0.44910195, y: -0.7729394}
+      - {x: -0.36121133, y: -0.71434563}
+      - {x: -0.18543006, y: -0.7729394}
 --- !u!212 &394221682
 SpriteRenderer:
   m_ObjectHideFlags: 0
