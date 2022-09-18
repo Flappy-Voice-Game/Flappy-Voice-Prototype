@@ -88,7 +88,7 @@ public class PP : MonoBehaviour
             }
         }
 
-        Debug.Log(Mathf.Round(average)); //отоброжения уровня шума
+        //Debug.Log(Mathf.Round(average)); //отоброжения уровня шума
         noiseLevelText.text = "Noise level: " + Mathf.Round(average);
     }
 
