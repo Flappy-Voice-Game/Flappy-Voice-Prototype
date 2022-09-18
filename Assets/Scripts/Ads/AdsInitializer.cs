@@ -5,7 +5,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 {
     [SerializeField] string _androidGameId;
     [SerializeField] string _iOSGameId;
-    string _gameId;
+    public string _gameId;
     [SerializeField] bool _testMode = true;
 
     private void Awake()
@@ -13,23 +13,30 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         if (Advertisement.isInitialized)
         {
             Debug.Log("Advertisement is Initialized");
-            LoadRewardedAd();
+            
         }
         else
         {
             InitializeAds();
         }
     }
+
+    public void ShowRewardedAds()
+    {
+        LoadRewardedAd();
+    }
+    
     public void InitializeAds()
     {
         _gameId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSGameId : _androidGameId;
         Advertisement.Initialize(_gameId, _testMode, this);
+        
     }
 
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
-        LoadInerstitialAd();
+        //LoadInerstitialAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
@@ -45,11 +52,12 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     public void LoadRewardedAd()
     {
         Advertisement.Load("Rewarded_Android", this);
+        Debug.Log("OnUnityAdsRewarded loading");
     }
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Debug.Log("OnUnityAdsAdLoaded");
+        Debug.Log("OnUnityAdsAdLoaded; " + placementId);
         Advertisement.Show(placementId,this);
     }
 
@@ -61,6 +69,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log("OnUnityAdsShowFailure");
+        Debug.Log(message);
     }
 
     public void OnUnityAdsShowStart(string placementId)
@@ -80,7 +89,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         if (placementId.Equals("Rewarded_Android") && UnityAdsShowCompletionState.COMPLETED.Equals(showCompletionState))
         {
             Debug.Log("rewared Player");
-            //мы посмотрели рекламу, сюда надо написать что делается за рекламу
+            
         }
         Time.timeScale = 1;
     }
