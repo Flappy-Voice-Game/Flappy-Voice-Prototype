@@ -25,12 +25,12 @@ public class PipeGenerator : MonoBehaviour
         if (randPipe > 5) // спаун трубы без монетки
         {
             GameObject newPipe = Instantiate(pipes, new Vector3(pipeDistance, rand, 1), Quaternion.identity);
-            pipeDistance += 5;
+            pipeDistance += 3;
         }
         else // спаун трубы с монеткой
         {
             GameObject newPipe = Instantiate(pipesWithMoney, new Vector3(pipeDistance, rand, 1), Quaternion.identity);
-            pipeDistance += 5;
+            pipeDistance += 3.5f;
         }
     }
 }

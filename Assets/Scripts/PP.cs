@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Animations;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
 
 public class PP : MonoBehaviour
 {
@@ -12,7 +15,8 @@ public class PP : MonoBehaviour
     [SerializeField] Text scoreText, noiseLevelText, bestSoreText, moneyText, moneyInShopText;
     [SerializeField] bool statPos;
     [SerializeField] GameObject DeadLine, deadPanel;
-
+    [HideInInspector][SerializeField] private string leaderBoard = ""; //МАКСУ
+    
     public int money;
 
     public bool pause;
@@ -32,7 +36,18 @@ public class PP : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
+        Social.localUser.Authenticate(succesc =>
+        {
+            if (succesc)
+            {
+            }
+            else
+            {
 
+            }
+        });
         money = PlayerPrefs.GetInt("Money", money);      // загрузка кол. монет и лучший результат
         bestScore = PlayerPrefs.GetInt("bestScore", bestScore);
 
@@ -73,7 +88,7 @@ public class PP : MonoBehaviour
             {
                 _isSpawn = true;
                 if(!pause)
-                    transform.position += Vector3.up * speed;
+                    transform.position += Vector3.up * average/delel;
 
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 20);
                 DeadLine.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -97,6 +112,7 @@ public class PP : MonoBehaviour
     {
         if (collision.gameObject.tag == "gg") //столкновение с опасностями
         {
+
             deadPanel.SetActive(true);
             gameObject.SetActive(false);
             Pause();
@@ -104,6 +120,7 @@ public class PP : MonoBehaviour
             {
                 bestScore = score;
                 PlayerPrefs.SetInt("bestScore", bestScore);
+                Social.ReportScore(bestScore, leaderBoard,(bool success)=> { });
             }
         }
     }
@@ -146,5 +163,13 @@ public class PP : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.None;
         pause = false;
+    }
+    public void TabLid()
+    {
+        Social.ShowLeaderboardUI();
+    }
+    public void Exit()
+    {
+        //PlayGamesPlatform.Instance.SignOut();
     }
 }
