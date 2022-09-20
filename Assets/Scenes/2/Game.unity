@@ -3118,8 +3118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc85822b948d0743b7747a5af3e3b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delel: 27000
-  speed: 0.001
+  delel: 25000
+  speed: 0.009
   spawn: {fileID: 1815848270}
   scoreText: {fileID: 1178505031}
   noiseLevelText: {fileID: 918563953}
