@@ -3252,7 +3252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delel: 25000
-  speed: 0.009
+  speed: 0.015
   spawn: {fileID: 1815848270}
   scoreText: {fileID: 1178505031}
   noiseLevelText: {fileID: 918563953}
@@ -4846,7 +4846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidGameId: 4934462
   _iOSGameId: 4934463
-  _testMode: 1
+  _testMode: 0
 --- !u!4 &1827071181
 Transform:
   m_ObjectHideFlags: 0
