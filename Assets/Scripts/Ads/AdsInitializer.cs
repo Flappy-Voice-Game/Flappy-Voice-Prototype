@@ -1,11 +1,11 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] string _androidGameId;
     [SerializeField] string _iOSGameId;
-    public string _gameId;
+    private string _gameId;
     [SerializeField] bool _testMode = true;
 
     private void Awake()
@@ -93,4 +93,4 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         }
         Time.timeScale = 1;
     }
-}
+}*/

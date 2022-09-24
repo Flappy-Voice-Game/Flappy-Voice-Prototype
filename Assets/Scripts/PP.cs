@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Animations;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
+//using GooglePlayGames;
+//using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 
 public class PP : MonoBehaviour
@@ -21,6 +21,7 @@ public class PP : MonoBehaviour
 
     public bool pause;
     public bool _isSpawn;
+    public bool dead;
 
     private int score, bestScore;
     [SerializeField] private int currentSkin;
@@ -32,12 +33,14 @@ public class PP : MonoBehaviour
 
     private float[] samples;
 
+    public UI ui;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();
+        //PlayGamesPlatform.DebugLogEnabled = true;
+        //PlayGamesPlatform.Activate();
         Social.localUser.Authenticate(succesc =>
         {
             if (succesc)
@@ -112,10 +115,9 @@ public class PP : MonoBehaviour
     {
         if (collision.gameObject.tag == "gg") //столкновение с опасностями
         {
-
-            deadPanel.SetActive(true);
-            gameObject.SetActive(false);
-            Pause();
+            transform.position = new Vector2(0f, 1000f);
+            Dead();
+            ui.openDeadPanel();
             if (bestScore < score)
             {
                 bestScore = score;
@@ -157,6 +159,12 @@ public class PP : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         pause = true;
+    }
+
+    public void Dead()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        dead = true;
     }
 
     public void Resume()
