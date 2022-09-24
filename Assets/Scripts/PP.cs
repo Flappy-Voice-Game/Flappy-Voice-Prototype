@@ -16,6 +16,7 @@ public class PP : MonoBehaviour
     [SerializeField] bool statPos;
     [SerializeField] GameObject DeadLine, deadPanel;
     [HideInInspector][SerializeField] private string leaderBoard = ""; //МАКСУ
+    [SerializeField] Slider sliderMicro;
     
     public int money;
 
@@ -37,6 +38,8 @@ public class PP : MonoBehaviour
 
     private void Start()
     {
+        delel = PlayerPrefs.GetFloat("delel",delel);
+        sliderMicro.value = PlayerPrefs.GetFloat("delel", sliderMicro.value);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         //PlayGamesPlatform.DebugLogEnabled = true;
@@ -70,6 +73,9 @@ public class PP : MonoBehaviour
         moneyInShopText.text = "Money: " + money;
         scoreText.text = "Score: " + score;
 
+       
+         PlayerPrefs.SetFloat("delel", sliderMicro.value);
+        delel = PlayerPrefs.GetFloat("delel", delel);
         currentSkin = PlayerPrefs.GetInt("skinNum");
         anim.SetInteger("skinNum", currentSkin);
 
