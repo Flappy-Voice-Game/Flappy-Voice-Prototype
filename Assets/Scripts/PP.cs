@@ -74,7 +74,7 @@ public class PP : MonoBehaviour
         scoreText.text = "Score: " + score;
 
        
-         PlayerPrefs.SetFloat("delel", sliderMicro.value);
+        PlayerPrefs.SetFloat("delel", sliderMicro.value);
         delel = PlayerPrefs.GetFloat("delel", delel);
         currentSkin = PlayerPrefs.GetInt("skinNum");
         anim.SetInteger("skinNum", currentSkin);
