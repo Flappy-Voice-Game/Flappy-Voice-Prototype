@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
@@ -93,4 +93,4 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         }
         Time.timeScale = 1;
     }
-}*/
+}

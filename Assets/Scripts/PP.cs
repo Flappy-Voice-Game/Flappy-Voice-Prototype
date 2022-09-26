@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Animations;
-//using GooglePlayGames;
-//using GooglePlayGames.BasicApi;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 
 public class PP : MonoBehaviour
@@ -19,6 +19,7 @@ public class PP : MonoBehaviour
     [SerializeField] Slider sliderMicro;
     
     public int money;
+   public int ReklamChet;
 
     public bool pause;
     public bool _isSpawn;
@@ -31,6 +32,7 @@ public class PP : MonoBehaviour
     private Animator anim;
     private AudioClip clip;
     public PipeGenerator pg;
+    private AdsInitializer ad;
 
     private float[] samples;
 
@@ -38,12 +40,13 @@ public class PP : MonoBehaviour
 
     private void Start()
     {
+        ReklamChet = PlayerPrefs.GetInt("RCH", ReklamChet );
         delel = PlayerPrefs.GetFloat("delel",delel);
         sliderMicro.value = PlayerPrefs.GetFloat("delel", sliderMicro.value);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //PlayGamesPlatform.DebugLogEnabled = true;
-        //PlayGamesPlatform.Activate();
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
         Social.localUser.Authenticate(succesc =>
         {
             if (succesc)
@@ -121,6 +124,7 @@ public class PP : MonoBehaviour
     {
         if (collision.gameObject.tag == "gg") //столкновение с опасностями
         {
+
             transform.position = new Vector2(0f, 1000f);
             Dead();
             ui.openDeadPanel();
@@ -130,6 +134,16 @@ public class PP : MonoBehaviour
                 PlayerPrefs.SetInt("bestScore", bestScore);
                 Social.ReportScore(bestScore, leaderBoard,(bool success)=> { });
             }
+            if (ReklamChet==5)
+            {
+                ReklamChet = 0;
+                ad.ShowRewardedAds();
+            }
+            else
+            {
+                ReklamChet++;
+            }
+            PlayerPrefs.SetInt("RCH", ReklamChet);
         }
     }
 
