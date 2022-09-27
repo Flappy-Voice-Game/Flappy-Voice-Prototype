@@ -38,6 +38,18 @@ public class PP : MonoBehaviour
 
     public UI ui;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("Money"))
+        {
+            money = PlayerPrefs.GetInt("Money", money); //загрузка кол. монет
+        }
+        else
+        {
+            money = 0;
+        }
+    }
+
     private void Start()
     {
         ReklamChet = PlayerPrefs.GetInt("RCH", ReklamChet );
@@ -51,14 +63,14 @@ public class PP : MonoBehaviour
         {
             if (succesc)
             {
+
             }
             else
             {
 
             }
         });
-        money = PlayerPrefs.GetInt("Money", money);      // загрузка кол. монет и лучший результат
-        bestScore = PlayerPrefs.GetInt("bestScore", bestScore);
+        bestScore = PlayerPrefs.GetInt("bestScore", bestScore);   //загрузка лучший результат
 
         score = 0;
         statPos = true;

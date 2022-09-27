@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6039216}
+  m_Color: {r: 0.040984698, g: 0, b: 0.2830189, a: 0.7372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9136572144232859775, guid: ff7be817c898bd048aafdecd2a80d1e0, type: 3}
+  m_Sprite: {fileID: -273060469431498887, guid: ff7be817c898bd048aafdecd2a80d1e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2365,10 +2365,10 @@ RectTransform:
   m_Father: {fileID: 141166306}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -264.67017}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -110, y: -110}
+  m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850531739
 MonoBehaviour:
@@ -3528,7 +3528,7 @@ MonoBehaviour:
   m_MinValue: 10000
   m_MaxValue: 40000
   m_WholeNumbers: 0
-  m_Value: 24172
+  m_Value: 40000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3940,6 +3940,7 @@ MonoBehaviour:
   - {fileID: 1247038227}
   - {fileID: 1270136500}
   - {fileID: 1472783096}
+  - {fileID: 2068230890}
   pp: {fileID: 0}
 --- !u!1001 &1486093859
 PrefabInstance:
@@ -5157,8 +5158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c136bf5cbef4c0429e443b535e80c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidGameId: 
-  _iOSGameId: 
+  _androidGameId: 4934462
+  _iOSGameId: 4934463
   _testMode: 1
 --- !u!4 &2144012843
 Transform:
