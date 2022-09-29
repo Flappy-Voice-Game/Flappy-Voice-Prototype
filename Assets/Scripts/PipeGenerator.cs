@@ -11,7 +11,7 @@ public class PipeGenerator : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 25; i++)
         {
             Spawn();
         }
