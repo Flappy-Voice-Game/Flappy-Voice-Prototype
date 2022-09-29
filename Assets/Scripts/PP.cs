@@ -111,18 +111,17 @@ public class PP : MonoBehaviour
             if (average > 60)
             {
                 _isSpawn = true;
-                if(!pause)
-                    transform.position += Vector3.up * average/delel;
+                if (!pause)
+                    transform.position += Vector3.up * average / delel;
 
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 20);
+                transform.rotation = Quaternion.Euler(0, 0, 20);
                 DeadLine.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else
             {
-                if(!pause)
+                if (!pause)
                     transform.position += Vector3.down * speed;
-
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, -20);
+                transform.rotation = Quaternion.Euler(0, 0, -20);
                 DeadLine.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
