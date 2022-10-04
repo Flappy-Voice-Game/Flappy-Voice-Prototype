@@ -12,14 +12,21 @@ public class UI : MonoBehaviour
     public GameObject pausePanel;
     public GameObject shopPanel;
 
+    public bool isMenu;
+
     private void Start()
     {
-        deadPanel.SetActive(false);
-        pausePanel.SetActive(false);
-        shopPanel.SetActive(false);
+        if (isMenu)
+            shopPanel.SetActive(false);
+        else
+        {
+            deadPanel.SetActive(false);
+            pausePanel.SetActive(false);
+            shopPanel.SetActive(false);
+        }
     }
 
-    public PP pp;
+    public PlayerController pp;
 
     public void openDeadPanel()
     {
@@ -45,30 +52,45 @@ public class UI : MonoBehaviour
 
     public void openShopPanel()
     {
-        shopPanel.SetActive(true);
-        if (pp.pause)
+        if (isMenu)
         {
-            closePausePanel();
+            shopPanel.SetActive(true);
             shopPanelAnim.SetBool("open", true);
         }
-        else if(pp.dead)
+        else
         {
-            closeDeadPanel();
-            shopPanelAnim.SetBool("open", true);
+            shopPanel.SetActive(true);
+            if (pp.pause)
+            {
+                closePausePanel();
+                shopPanelAnim.SetBool("open", true);
+            }
+            else if (pp.dead)
+            {
+                closeDeadPanel();
+                shopPanelAnim.SetBool("open", true);
+            }
         }
     }
 
     public void closeShopPanel()
     {
-        if (pp.pause)
+        if (isMenu)
         {
-            openPausePanel();
             shopPanelAnim.SetBool("open", false);
         }
-        else if(pp.dead)
+        else
         {
-            openDeadPanel();
-            shopPanelAnim.SetBool("open", false);
+            if (pp.pause)
+            {
+                openPausePanel();
+                shopPanelAnim.SetBool("open", false);
+            }
+            else if (pp.dead)
+            {
+                openDeadPanel();
+                shopPanelAnim.SetBool("open", false);
+            }
         }
     }
 }

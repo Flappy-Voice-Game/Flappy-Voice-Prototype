@@ -95,7 +95,7 @@ public class Daily : MonoBehaviour
 
         dailyPanelAnim.SetBool("open", true);
         int rnd = UnityEngine.Random.Range(30, 100);
-        currentReward.text = "You got: " + rnd + " money";
+        currentReward.text = "you got: " + rnd + " money";
         money = PlayerPrefs.GetInt("Money");
         money += rnd;
         PlayerPrefs.SetInt("Money", money);
