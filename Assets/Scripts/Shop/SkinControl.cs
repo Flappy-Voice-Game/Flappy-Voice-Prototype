@@ -12,11 +12,11 @@ public class SkinControl : MonoBehaviour
 
     public Image[] skins;
 
-    public PP pp;
+    public PlayerController pp;
 
     private void Start()
     {
-        pp = FindObjectOfType<PP>();
+        pp = FindObjectOfType<PlayerController>();
 
         if (PlayerPrefs.GetInt("skin1" + "buy") == 0)
         {
