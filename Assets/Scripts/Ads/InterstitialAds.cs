@@ -57,6 +57,8 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
+        Debug.Log(error);
         throw new System.NotImplementedException();
+        
     }
 }

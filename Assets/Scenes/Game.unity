@@ -3888,7 +3888,8 @@ MonoBehaviour:
   moneyInShopText: {fileID: 925472785}
   startPos: 0
   leaderBoard: 
-  sensitivitySlider: {fileID: 1233597620}
+  sensitivitySlider: {fileID: 821680947}
+  sensitivitySlider2: {fileID: 1233597620}
   money: 0
   pause: 0
   dead: 0
@@ -4974,7 +4975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AndroidGameID: 4954199
   IOSGameID: 4954198
-  testMode: 0
+  testMode: 1
 --- !u!4 &1558661137
 Transform:
   m_ObjectHideFlags: 0
@@ -5416,7 +5417,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1225606013}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SaveSensitivity
+        m_MethodName: SaveSensitivity2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

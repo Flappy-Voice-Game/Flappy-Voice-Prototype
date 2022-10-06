@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1722301773}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: SaveSensitivity
         m_Mode: 1
@@ -4539,6 +4539,7 @@ MonoBehaviour:
   startPos: 0
   leaderBoard: 
   sensitivitySlider: {fileID: 623745215}
+  sensitivitySlider2: {fileID: 623745215}
   money: 0
   pause: 0
   dead: 0
@@ -4660,6 +4661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728798577}
   - component: {fileID: 1728798576}
+  - component: {fileID: 1728798578}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -4679,8 +4681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c136bf5cbef4c0429e443b535e80c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AndroidGameID: 4954199
-  IOSGameID: 4954198
+  AndroidGameID: 4959915
+  IOSGameID: 4959914
   testMode: 0
 --- !u!4 &1728798577
 Transform:
@@ -4696,6 +4698,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1728798578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728798575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4c0c08d049d5e4d958d7e1003c2fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidAdID: Interstitial_Android
+  IOSAdID: Interstitial_iOS
 --- !u!1 &1825621876
 GameObject:
   m_ObjectHideFlags: 0

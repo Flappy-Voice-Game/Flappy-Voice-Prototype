@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector][SerializeField] private string leaderBoard = ""; //МАКСУ
 
     [SerializeField] Slider sensitivitySlider;
+    [SerializeField] Slider sensitivitySlider2;
     
     public int money;
 
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             sensitivity = PlayerPrefs.GetFloat("sens");
             sensitivitySlider.value = sensitivity;
+            sensitivitySlider2.value = sensitivity;
         }
         else
             sensitivity = 60f;
@@ -219,6 +221,11 @@ public class PlayerController : MonoBehaviour
     public void SaveSensitivity()
     {
         sensitivity = sensitivitySlider.value;
+        PlayerPrefs.SetFloat("sens", sensitivity);
+    }
+    public void SaveSensitivity2()
+    {
+        sensitivity = sensitivitySlider2.value;
         PlayerPrefs.SetFloat("sens", sensitivity);
     }
 
